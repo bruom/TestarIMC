@@ -16,7 +16,7 @@ public class PessoaTest {
     public PessoaTest() {
     }
 
-    Pessoa juvi = new Pessoa(1.8, 67.0, false);
+    Pessoa juvi = new Pessoa(2.0, 30.0, 0);
     
     @Test
     public void testCalculaIMC() {
@@ -25,7 +25,7 @@ public class PessoaTest {
 
     @Test
     public void testExibeResultado() {
-        Assert.assertTrue(juvi.exibeResultado(juvi.calculaIMC()).startsWith("IDEAL"));
+        Assert.assertTrue(juvi.exibeResultado(juvi.calculaIMC()).startsWith("ERRO"));
     }
 
     
