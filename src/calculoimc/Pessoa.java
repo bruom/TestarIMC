@@ -12,24 +12,27 @@ public class Pessoa {
     
     private double alt;
     private double peso;
-    private boolean sexo; //0-Masculino 1-Feminino
+    private int sexo; //0-Masculino 1-Feminino
     private double imc;
     
-    public Pessoa(double alt, double peso, boolean sexo) {
+    public Pessoa(double alt, double peso, int sexo) {
         this.alt = alt;
         this.peso = peso;
         this.sexo = sexo;
     }
     
     public double calculaIMC(){
+        
         double imc;
         imc = this.peso/(this.alt*this.alt);
         return imc;
     }
     
     public String exibeResultado(double imc){
-        if(sexo=true){//se for mulher
-            if(imc<17.9)
+        if(sexo==1){//se for mulher
+            if(imc<15.0)
+                return "ERRO IMC BAIXO: Valor de IMC fora da tabela.";
+            else if(imc<17.9)
                 return "RISCO BAIXO: Você está abaixo do peso recomendado.";
             else if(imc<24.4)
                 return "IDEAL: Você está muito bem! Continue assim!";
@@ -39,8 +42,10 @@ public class Pessoa {
                 return "RISCO ELEVADO: Você está Obeso. Procure o acompanhamento de um nutricionista e realizar mais atividades físicas!";
         }
         
-        else{//se for homem
-            if(imc<18.9)
+        else if(sexo==0){//se for homem
+            if(imc<17.9)
+                return "ERRO IMC BAIXO: Valor de IMC fora da tabela.";
+            else if(imc<18.9)                       
                 return "RISCO BAIXO: Você está abaixo do peso recomendado.";
             else if(imc<24.9)
                 return "IDEAL: Você está muito bem! Continue assim!";
@@ -49,7 +54,9 @@ public class Pessoa {
             else
                 return "RISCO ELEVADO: Você está Obeso. Procure o acompanhamento de um nutricionista e realizar mais atividades físicas!";
    
-        }      
+        } 
+        else
+            return "ERRO VALOR SEXO: Valor de sexo inválido.";
                         
     }
     
@@ -70,11 +77,11 @@ public class Pessoa {
         this.peso = peso;
     }
 
-    public boolean isSexo() {
+    public int isSexo() {
         return sexo;
     }
 
-    public void setSexo(boolean sexo) {
+    public void setSexo(int sexo) {
         this.sexo = sexo;
     }
     
